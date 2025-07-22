@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Overview from "./Overview.jsx";
+import AddTransaction from './AddTransaction.jsx';
 
 import './App.css';
 
@@ -61,6 +62,7 @@ function App() {
 
       </header>
       <Overview/>
+      <AddTransaction/>
     </>
   )
 }
