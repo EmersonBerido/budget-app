@@ -21,7 +21,21 @@ function AddTransaction() {
     }
     console.log(newTransaction);
 
+    //ENCRYPT DATA AFTER LEARNING NODE JS
+
     //stores new transaction in local storage
+    //maybe use a stack to store transactions
+    let userInfo;
+    try {
+      userInfo = JSON.parse(localStorage.getItem("userInfo")) || []
+    }
+    catch (error){
+      console.error("error when parsing userInfo from local storage:", error)
+    }
+    finally {
+      userInfo.push(newTransaction);
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    }
     //stored in stack??
   }
 
