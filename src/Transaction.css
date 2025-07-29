@@ -1,0 +1,15 @@
+:root {
+  --primary : white;
+  --secondary : white;
+
+
+  --expense : red;
+  --income : green;
+}
+
+#expense {
+  color : var(--expense);
+}
+#income {
+  color : var(--income);
+}
