@@ -1,3 +1,11 @@
+import "./AddTransaction.css";
+import Colors from "./Colors.js";
+
+const primary = Colors.primary;
+console.log(primary)
+document.documentElement.style.setProperty("--primary", primary);
+
+//TODO: Add aria labels to inputs; work on css
 function AddTransaction() {
   //add transactions in userInfo array of objects in local storage
   //objects will contain {store/Location name (will be the title of the object), what was bought, if it was an income or expense, amount used, date, category}}
@@ -40,43 +48,51 @@ function AddTransaction() {
   }
 
   return (
-    <section style = {{border : "1px solid green"}}>
+    <section className="add-transaction-container">
       <h1>Add Transaction</h1>
-      <form onSubmit={handleSubmit}>
-        <label for="store">Store</label>
-        <input type="text" name="store" id="store" placeholder="Target" required/>
+      <form 
+        onSubmit={handleSubmit}
+        className="form-container"
+      >
+        <div className="store-item-container">
 
-        <label for="item">Item</label>
+          <label htmlFor="store">Store</label>
+          <input type="text" name="store" id="store" placeholder="Target" required/>
+
+          <label htmlFor="amount">Amount</label>
+          <input type="number" inputMode="numeric" name = "amount" id="amount" min="0" step="0.01" required/>
+
+        </div>
+
+        <label htmlFor="item">Item</label>
         <input type="text" name="item" id="item" placeholder="Banana" required/>
 
-        <label for="transactionType">Expense or Income?</label>
-        <select name="transactionType" id="transactionType" required>
+        <label htmlFor="transactionType">Expense or Income?</label>
+        <select name="transactionType" id="transactionType" defaultValue="" required>
+          <option value="" disabled>Select Type</option>
           <option value="expense">Expense</option>
           <option value="income">Income</option>
         </select>
 
-        <label for="amount">Amount</label>
-        <input type="number" inputMode="numeric" name = "amount" id="amount" min="0" step="0.01" required/>
-
-        <section className="date">
-          <label for="day">Day</label>
-          <input type="number" min="0" max="31" name="day" id="day" required/>
-
-          <label for="month">Month</label>
-          <input type="number" min="1" max="12" name="month" id="month" required/>
-
-          <label for="year">Year</label>
-          <input type="number" min="2000" max="2025" name="year" id="year" required/>
-        </section>
-
-        <select name="category" id="category" required>
-          <option value="" disabled selected>Select Category</option>
+        <select name="category" id="category" defaultValue="" required>
+          <option value="" disabled>Select Category</option>
           <option value="food" aria-label="food">Food</option>
           <option value="entertainment" aria-label="entertainment">Entertainment</option>
           <option value="school" aria-label="school">School</option>
           <option value="job" aria-label="job">Job</option>
           <option value="health" aria-label="health">Health</option>
         </select>
+
+        <section className="date">
+          <label htmlFor="day">Day</label>
+          <input type="number" min="0" max="31" name="day" id="day" placeholder="day" required/>
+
+          <label htmlFor="month">Month</label>
+          <input type="number" min="1" max="12" name="month" id="month" required/>
+
+          <label htmlFor="year">Year</label>
+          <input type="number" min="2000" max="2025" name="year" id="year" required/>
+        </section>
 
         <button type="submit">submit</button>
 
