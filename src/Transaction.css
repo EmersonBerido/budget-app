@@ -7,9 +7,48 @@
   --income : green;
 }
 
-#expense {
+.transaction-container {
+  position : relative;
+  background-color: var(--primary);
+  border : 3px solid blue;
+  font-size: 24px;
+  padding : 2% 8%;
+  width : 70vw;
+  max-width: 750px;
+  height : 150px;
+}
+
+.transaction-container * {
+  background-color : transparent;
+}
+
+.transaction-container > #expense {
   color : var(--expense);
 }
-#income {
+.transaction-container > #income {
   color : var(--income);
+}
+.transaction-container > #expense, .transaction-container > #income {
+  font-size: 1em;
+  position : absolute;
+  top : 0px;
+  right : 3%;
+
+}
+.transaction-container > #store {
+  position : absolute;
+  top : 0px;
+  left : 3%;
+  font-size : 1em;
+}
+.transaction-container > #item {
+  position : absolute;
+  top : 30%;
+  font-size : 0.9em;
+}
+.transaction-container > #date {
+  position : absolute;
+  bottom : 0px;
+  right : 3%;
+  font-size : 0.8em;
 }

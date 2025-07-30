@@ -5,6 +5,10 @@ const primary = Colors.primary;
 console.log(primary)
 document.documentElement.style.setProperty("--primary", primary);
 
+//---Important Notes---
+//id is started at 0; kept for deletion purposes later
+
+
 //TODO: Add aria labels to inputs; work on css
 //TODO: Refresh page after adding transaction
 function AddTransaction() {
@@ -26,7 +30,8 @@ function AddTransaction() {
         month : event.target.month.value,
         year : event.target.year.value,
       },
-      category : event.target.category.value
+      category : event.target.category.value,
+      id : localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")).length : 0
     }
     console.log(newTransaction);
 

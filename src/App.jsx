@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Overview from "./Overview.jsx";
 import AddTransaction from './AddTransaction.jsx';
@@ -6,10 +6,15 @@ import Transaction from "./Transaction.jsx"
 
 import './App.css';
 
-//TODO FUTURE IDEAS: sort by date, category, amount
+//TODO FUTURE IDEAS: sort by date/category/amount, figure out how to encrypt data in localStorage later
+//TODO: refresh page after adding transaction
 
 function App() {
+  //-- States --
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  //-- Local Storage --
+  const transactionList = localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []
   
 
   // --- Login Functionality ---
@@ -32,34 +37,24 @@ function App() {
     }
   }
 
-  //--- Information to be passed as props; objects ---
-  //user info will be stored/obtained from local storage; figure out how to encrypt later
-  //user info in local storage will be stringified array of objects using JSON.stringify; maybe just use this in a different file/remove it from this file
+  //--- creates list of transactions that'll be displayed ---
   let transaction;
-  if (localStorage.getItem("userInfo") !== null){
+  if (transactionList.length > 0){
+
     //if there is user transaction info, parse it
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    transaction = userInfo.map((transaction, index) => {
+    const info = JSON.parse(localStorage.getItem("userInfo"));
+    transaction = info.map((current, index) => {
       return <Transaction 
         key = {index}
-        store = {transaction.store}
-        amount = {transaction.amount}
-        item = {transaction.item}
-        transactionType = {transaction.transactionType}
-        date = {{
-          day : transaction.date.day,
-          month : transaction.date.month,
-          year : transaction.date.year
-        }}
+        store = {current.store}
+        amount = {current.amount}
+        item = {current.item}
+        transactionType = {current.transactionType}
+        date = {current.date}
       />
     })
+  }
 
-    //user info will be an array of objects, objects will contain {store/Location name, what was bought, if it was an income or expense, amount used, date, category}}
-    //user info will be added in a file called AddTransaction.jsx
-  }
-  else {
-    //if theres nothing skip???
-  }
 
   return (
     <>
@@ -71,6 +66,9 @@ function App() {
           <button type = "submit">submit</button>
         </form>
 
+      {
+        //if user is logged in, show details
+      }
       {isUserLoggedIn && 
         <>
           <h2>Added the right password</h2>

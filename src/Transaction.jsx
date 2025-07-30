@@ -19,17 +19,16 @@ function Transaction(props)
 
   return (
     <article 
-      style = {{border : "1px solid blue"}}
       className = "transaction-container"
     >
-      <h2>{props.store}</h2>
+      <h2 id="store">{props.store}</h2>
       <h2 
         id={props.transactionType === "expense" ? "expense" : "income"}
         >
         {`$${props.amount}`}
       </h2>
-      <h2>{props.item}</h2>
-      <h2>{`${props.date.day} / ${props.date.month} / ${props.date.year}`}</h2>
+      <h2 id="item">{props.item}</h2>
+      <h2 id="date">{`${props.date.day} / ${props.date.month} / ${props.date.year}`}</h2>
     </article>
   )
 }
