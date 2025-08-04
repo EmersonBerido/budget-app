@@ -1,3 +1,6 @@
+import AmountBar from "./AmountBar.jsx";
+
+//maybe use state to store total income and total spent so we can force a rerender when new transaction is added
 function Summary() 
 {
   const data = JSON.parse(localStorage.getItem("userInfo") || []);
@@ -5,15 +8,16 @@ function Summary()
   //overall spending and income
   let totalSpent = 0, totalIncome = 0;
 
-  const createEmptyAmount = () => ({expense : 0, income : 0});
-  let food = createEmptyAmount(),
-      entertainment = createEmptyAmount(),
-      school = createEmptyAmount(),
-      job = createEmptyAmount(),
-      health = createEmptyAmount();
+  const createEmptyAmount = (name) => ({name : name, expense : 0, income : 0});
+  let food = createEmptyAmount("food"),
+      entertainment = createEmptyAmount("entertainment"),
+      school = createEmptyAmount("school"),
+      job = createEmptyAmount("job"),
+      health = createEmptyAmount("health");
 
-  //look over every transaction and if income add to totalIncome, vice versa for totalSpent
+  //look over every transaction and if income add to totalIncome, vice versa for totalSpent for each category
   data.forEach( (transaction) => {
+
     switch (transaction.transactionType){
       case "income":
         switch (transaction.category) {
@@ -58,6 +62,7 @@ function Summary()
               console.error("unable to find category: ", transaction.category);
               break;
         }
+        break;
       default:
         console.error("Unknown transaction type: ", transaction.transactionType);
         break;
@@ -66,11 +71,37 @@ function Summary()
   totalIncome = food.income + entertainment.income + school.income + job.income + health.income; 
   totalSpent = food.expense + entertainment.expense + school.expense + job.expense + health.expense;
 
+  //produce a bar of each category showing how much was spent and earned in a single bar
+  const createBar = (category, type, amount, total) => {
+    return (
+      <AmountBar 
+        category = {category}
+        amount = {amount}
+        total = {total}
+        key = {`${category}-${type}`}
+      />
+    )
+  }
+
+  //create bars for each category
+  const incomeBars = [food, entertainment, school, job, health].map((category) => {
+    return (
+      createBar(category.name, "income", category.income, totalIncome)
+    )
+  })
+  const expenseBars = [food, entertainment, school, job, health].map( (category) => {
+    return (
+      createBar(category.name, "expense", category.expense, totalSpent)
+    )
+  })
+
   return (
     <section>
       <h1>summary</h1>
       <h2>Total Income: {totalIncome}</h2>
       <h2>Total Spent: {totalSpent}</h2>
+      <AmountBar/>
+      {incomeBars}
     </section>
   )
 }
