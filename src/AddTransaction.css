@@ -3,17 +3,16 @@
   --secondary : blue;
 }
 
- *{
-  background-color : var(--primary);
-}
-
 .add-transaction-container {
   background-color: var(--primary);;
-  border : 1px solid blue;
+  border : 1px solid red;
   width : 70vw;
   max-width: 750px;
   padding : 2% 8%;
 }
-.add-transaction-container > form {
-  background-color: var(--primary)
+.add-transaction-container label{
+  background-color : transparent;
+}
+.add-transaction-container > form, .store-item-container, .date {
+  background-color: transparent;
 }

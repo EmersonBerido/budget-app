@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Overview from "./Overview.jsx";
 import AddTransaction from './AddTransaction.jsx';
 import Transaction from "./Transaction.jsx"
+import Summary from "./Summary.jsx";
 
 import './App.css';
 
@@ -78,6 +79,7 @@ function App() {
       </header>
       <Overview/>
       <AddTransaction/>
+      <Summary/>
       {transaction}
 
     </>
