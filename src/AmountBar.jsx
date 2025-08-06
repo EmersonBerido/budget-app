@@ -1,9 +1,40 @@
+import Colors from "./Colors.js";
+import "./AmountBar.css";
+
 //receives category, amount, total
+
+//it'll look like a loading bar, with the amount filled being the amount / total
+//the bar will have two different styles; one in this file, the other in its respective css
+//this file will be used to adjust the width of the bar
+//css file will adjust the color/overall style of the bar
 function AmountBar(props){
+  const barWidth = props.total > 0 ? (props.amount / props.total) * 100 : 0;
+
+  const barContainerStyle = {
+    width : "100%",
+    border : "3px solid pink",
+    display : "flex",
+    justfyContent : "center",
+  }
+  const style = {
+    border: "1px solid black",
+    borderRadius : "2px",
+    width : "70%",
+    height : "20px"
+  }
+  const barFillStyle = {
+    backgroundColor : Colors[props.category],
+    height : "100%",
+    width : `${barWidth}%`
+  }
   return (
-    <div style = {{border : "1px solid pink"}}>
-      <h2>{props.category}</h2>
-    </div>
+    <section style = {barContainerStyle}>
+      <label htmlFor={props.category}>{props.category}</label>
+      <div style = {style}>
+        <div style = {barFillStyle}/>
+      </div>
+    </section>
   )
 }
+
 export default AmountBar;

@@ -15,7 +15,8 @@ function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   //-- Local Storage --
-  const transactionList = localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []
+  //const transactionList = localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []
+  const [transactionList, setTransactionList] = useState(localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []);
   
 
   // --- Login Functionality ---
@@ -39,12 +40,11 @@ function App() {
   }
 
   //--- creates list of transactions that'll be displayed ---
-  let transaction;
+  let transactions;
   if (transactionList.length > 0){
 
     //if there is user transaction info, parse it
-    const info = JSON.parse(localStorage.getItem("userInfo"));
-    transaction = info.map((current, index) => {
+    transactions = transactionList.map((current, index) => {
       return <Transaction 
         key = {index}
         store = {current.store}
@@ -78,9 +78,12 @@ function App() {
 
       </header>
       <Overview/>
-      <AddTransaction/>
-      <Summary/>
-      {transaction}
+      <AddTransaction
+        list = {transactionList}
+        setList = {setTransactionList}
+      />
+      {transactionList.length > 0 && <Summary/>}
+      {transactions}
 
     </>
   )

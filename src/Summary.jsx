@@ -67,7 +67,9 @@ function Summary()
         console.error("Unknown transaction type: ", transaction.transactionType);
         break;
     }
-  })
+  });
+
+  //Calculate totals for Income and expenses
   totalIncome = food.income + entertainment.income + school.income + job.income + health.income; 
   totalSpent = food.expense + entertainment.expense + school.expense + job.expense + health.expense;
 
@@ -98,10 +100,10 @@ function Summary()
   return (
     <section>
       <h1>summary</h1>
-      <h2>Total Income: {totalIncome}</h2>
-      <h2>Total Spent: {totalSpent}</h2>
-      <AmountBar/>
+      <h2>Total Income: ${totalIncome.toFixed(2)}</h2>
       {incomeBars}
+      <h2>Total Spent: ${totalSpent.toFixed(2)}</h2>
+      {expenseBars}
     </section>
   )
 }

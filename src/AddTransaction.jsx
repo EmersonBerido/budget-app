@@ -11,7 +11,7 @@ document.documentElement.style.setProperty("--primary", primary);
 
 //TODO: Add aria labels to inputs; work on css
 //TODO: Refresh page after adding transaction
-function AddTransaction() {
+function AddTransaction(props) {
   //add transactions in userInfo array of objects in local storage
   //objects will contain {store/Location name (will be the title of the object), what was bought, if it was an income or expense, amount used, date, category}}
 
@@ -49,6 +49,7 @@ function AddTransaction() {
     finally {
       userInfo.push(newTransaction);
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      props.setList([...props.list, newTransaction]);
     }
     //stored in stack??
   }
