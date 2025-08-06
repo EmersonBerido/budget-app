@@ -102,6 +102,7 @@ function AddTransaction(props) {
         </section>
 
         <button type="submit">submit</button>
+        <button type="reset">Clear</button>
 
         
       </form>

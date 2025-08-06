@@ -9,18 +9,27 @@ import "./AmountBar.css";
 //css file will adjust the color/overall style of the bar
 function AmountBar(props){
   const barWidth = props.total > 0 ? (props.amount / props.total) * 100 : 0;
+  const barPercentage = 80;
+  const categoryPercentage = 100 - barPercentage;
 
   const barContainerStyle = {
     width : "100%",
     border : "3px solid pink",
     display : "flex",
-    justfyContent : "center",
+    justifyContent : "center",
+    alignItems : "center",
+    gap : "5px"
   }
-  const style = {
+  const categoryStyle = {
+    width : `${categoryPercentage}%`,
+    textAlign : "right",
+
+  }
+  const barStyle = {
     border: "1px solid black",
     borderRadius : "2px",
-    width : "70%",
-    height : "20px"
+    width : `${barPercentage}%`,
+    height : "20px",
   }
   const barFillStyle = {
     backgroundColor : Colors[props.category],
@@ -29,8 +38,8 @@ function AmountBar(props){
   }
   return (
     <section style = {barContainerStyle}>
-      <label htmlFor={props.category}>{props.category}</label>
-      <div style = {style}>
+      <label htmlFor={props.category} style = {categoryStyle}>{props.category}</label>
+      <div style = {barStyle}>
         <div style = {barFillStyle}/>
       </div>
     </section>
