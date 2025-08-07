@@ -41,11 +41,10 @@ function App() {
   }
 
   //--- creates list of transactions that'll be displayed ---
-  let transactions;
-  if (transactionList.length > 0){
+  const [transactions, setTransactions] = useState([]);
 
-    //if there is user transaction info, parse it
-    transactions = transactionList.map((current, index) => {
+  useEffect(() => {
+    setTransactions(transactionList.map((current, index) => {
       return <Transaction 
         key = {index}
         store = {current.store}
@@ -54,9 +53,30 @@ function App() {
         transactionType = {current.transactionType}
         date = {current.date}
       />
-    })
+    }))
+    console.log("new: ",transactions);
+  },[transactionList])
+
+  //-- Alter how Transactions are shown
+
+  //filter
+  function handleFilter(selection)
+  {
+    setTransactionList((list) => 
+      mergeSort(list, selection)
+    );
   }
-  
+
+  //Reverse list
+  function handleReverse()
+  {
+    // let reversed = transactionList;
+    // for (let i = 0; i < transactionList.length; i++)
+    // {
+    //   reversed[i] = transactionList[transactionList.length - i];
+    // }
+    // setTransactionList(reversed);
+  }
 
   // -- Merge Sort --
   //checking sort by date
@@ -93,6 +113,10 @@ function App() {
         setList = {setTransactionList}
       />
       {transactionList.length > 0 && <Summary/>}
+      <button onClick={() => handleFilter("category")}>Category</button>
+      <button onClick={() => handleFilter("price")}>Price</button>
+      <button onClick={() => handleFilter("date")}>Date</button>
+      <button onClick={handleReverse}>Reverse</button>
       {transactions}
       
       
