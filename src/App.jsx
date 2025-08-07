@@ -4,6 +4,7 @@ import Overview from "./Overview.jsx";
 import AddTransaction from './AddTransaction.jsx';
 import Transaction from "./Transaction.jsx"
 import Summary from "./Summary.jsx";
+import mergeSort from './MergeSort.js';
 
 import './App.css';
 
@@ -55,79 +56,17 @@ function App() {
       />
     })
   }
-  //MergeSort transactions :(
+  
 
-  //basic format of mergesort; still need to integrate selection into it
-  const mergeSort = function(arr, selection = "temp"){
-    if (arr.length < 2)
-    {
-      return arr;
-    }
-    const mid = Math.floor(arr.length / 2);
-    const leftArr = arr.slice(0,mid);
-    const rightArr = arr.slice(mid);
-    return merge(mergeSort(leftArr), mergeSort(rightArr));
-    
-  }
-  function merge(left, right){
-    const sorted = [];
-    while (left.length && right.length)
-    {
-      // if (left[0] > right[0]){
-      //   sorted.push(right.shift);
-      // }
-      // else {
-      //   sorted.push(left.shift);
-      // }
-      sorted.push(
-        compareDate(left[0], right[0]) === left[0] ? 
-        left.shift() :
-        right.shift()
-      )
-    }
-    return [...sorted, ...left, ...right]
-  }
+  // -- Merge Sort --
+  //checking sort by date
+  //console.log("date: ", mergeSort(transactionList, "date"));
+  // //checking sort by category
+  //console.log("category", mergeSort(transactionList, "category"));
+  // //checking sort by price
+  //console.log("price", mergeSort(transactionList, "price"));
 
-  //Comparison Methods: Date, Price, and Category
-  function compareDate(left, right)
-  {
-    //returns smaller 
-    //first check by year, then month, then date
-    if (left.date.year > right.date.year)
-    {
-      return right;
-    }
-    else if (right.date.year > left.date.year)
-    {
-      return left;
-    }
-    else 
-    {
-      //now check month
-      if (left.date.month > right.date.month)
-      {
-        return right;
-      }
-      else if (right.date.month > left.date.month)
-      {
-        return left;
-      }
-      else 
-      {
-        //now check day
-        if (left.date.day >= right.date.month)
-        {
-          return right;
-        }
-        else
-        {
-          return left;
-        }
-      }
-    }
-  }
 
-  console.log(mergeSort(transactionList))
   return (
     <>
       <header className = "login-container">
