@@ -70,13 +70,14 @@ function App() {
   //Reverse list
   function handleReverse()
   {
-    // let reversed = transactionList;
-    // for (let i = 0; i < transactionList.length; i++)
-    // {
-    //   reversed[i] = transactionList[transactionList.length - i];
-    // }
-    // setTransactionList(reversed);
+    setTransactionList((list) => {
+      let reversed = list.slice();
+
+      return reversed.reverse();
+    })
   }
+
+  //for checking if two objects are the same (for deleting entries), do JSON.stringify(obj) === JSON.stringify(copy)
 
   // -- Merge Sort --
   //checking sort by date
