@@ -5,18 +5,13 @@ import AddTransaction from './AddTransaction.jsx';
 import Transaction from "./Transaction.jsx"
 import Summary from "./Summary.jsx";
 import mergeSort from './MergeSort.js';
-
 import './App.css';
 
-//TODO FUTURE IDEAS: sort by date/category/amount, figure out how to encrypt data in localStorage later
-//TODO: refresh page after adding transaction
 
 function App() {
-  //-- States --
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  //-- Local Storage --
-  //const transactionList = localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []
+  //Local Storage
   const [transactionList, setTransactionList] = useState(localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []);
   
 
@@ -46,18 +41,17 @@ function App() {
   useEffect(() => {
     setTransactions(transactionList.map((current, index) => {
       return <Transaction 
-        key = {index}
+        id = {current.id}
+        key = {current.id}
         store = {current.store}
         amount = {current.amount}
         item = {current.item}
         transactionType = {current.transactionType}
         date = {current.date}
+        setList = {setTransactionList}
       />
     }))
-    console.log("new: ",transactions);
   },[transactionList])
-
-  //-- Alter how Transactions are shown
 
   //filter
   function handleFilter(selection)
@@ -87,9 +81,12 @@ function App() {
   // //checking sort by price
   //console.log("price", mergeSort(transactionList, "price"));
 
+  // -- Styling --
+  //document.documentElement.style.setProperty("--secondary", Colors.secondary);
+
 
   return (
-    <>
+    <main className="app-container">
       <header className = "login-container">
         <h1>title</h1>
         {isReturningUser ? <h2>Welcume</h2> : <h2>Sign up</h2>}
@@ -118,11 +115,13 @@ function App() {
       <button onClick={() => handleFilter("price")}>Price</button>
       <button onClick={() => handleFilter("date")}>Date</button>
       <button onClick={handleReverse}>Reverse</button>
-      {transactions}
+      <main className="transactions-container">
+        {transactions}
+      </main>
       
       
 
-    </>
+    </main>
   )
 }
 

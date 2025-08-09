@@ -16,6 +16,7 @@
   width : 70vw;
   max-width: 750px;
   height : 150px;
+  border-radius : 13px;
 }
 
 .transaction-container * {
@@ -51,4 +52,9 @@
   bottom : 0px;
   right : 3%;
   font-size : 0.8em;
+}
+.transaction-container > button {
+  position : absolute;
+  bottom :2%;
+  left : 3%;
 }

@@ -1,3 +1,15 @@
-*{
-  background-color: white;
+:root {
+  --primary : white;
+  --secondary : white;
+}
+* {
+  margin : 0;
+}
+.app-container{
+  left : 0;
+  top : 0;
+  background-color: var(--primary);
+  width : 100%;
+  height : 100%;
+  font-family : Merriweather;
 }

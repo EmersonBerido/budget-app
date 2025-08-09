@@ -3,7 +3,7 @@
 const Colors = {
   //main background colors
   primary: "#FFFDD0",
-  secondart : "blue",
+  secondary : "#FFFEE5",
   tertiary : "yellow",
 
   //transaction types

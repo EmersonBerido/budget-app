@@ -4,6 +4,7 @@ import Colors from "./Colors.js";
 const primary = Colors.primary;
 console.log(primary)
 document.documentElement.style.setProperty("--primary", primary);
+document.documentElement.style.setProperty("--secondary", Colors.secondary);
 
 //---Important Notes---
 //id is started at 0; kept for deletion purposes later
@@ -33,7 +34,6 @@ function AddTransaction(props) {
       category : event.target.category.value,
       id : localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")).length : 0
     }
-    console.log(newTransaction);
 
     //ENCRYPT DATA AFTER LEARNING NODE JS
 

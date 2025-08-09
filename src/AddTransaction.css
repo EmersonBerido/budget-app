@@ -4,7 +4,7 @@
 }
 
 .add-transaction-container {
-  background-color: var(--primary);;
+  background-color: var(--secondary);;
   border : 1px solid red;
   width : 70vw;
   max-width: 750px;
@@ -15,4 +15,8 @@
 }
 .add-transaction-container > form, .store-item-container, .date {
   background-color: transparent;
+}
+.add-transaction-container input {
+  border-radius : 8px;
+  border : 3px solid grey;
 }
