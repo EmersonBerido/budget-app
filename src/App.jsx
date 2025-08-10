@@ -110,14 +110,20 @@ function App() {
         list = {transactionList}
         setList = {setTransactionList}
       />
-      {transactionList.length > 0 && <Summary/>}
-      <button onClick={() => handleFilter("category")}>Category</button>
-      <button onClick={() => handleFilter("price")}>Price</button>
-      <button onClick={() => handleFilter("date")}>Date</button>
-      <button onClick={handleReverse}>Reverse</button>
-      <main className="transactions-container">
-        {transactions}
-      </main>
+      {transactionList.length > 0 && 
+        <main className="info-container">
+          <Summary/>
+          <section className="viewable-transactions-container">
+            <button onClick={() => handleFilter("category")}>Category</button>
+            <button onClick={() => handleFilter("price")}>Price</button>
+            <button onClick={() => handleFilter("date")}>Date</button>
+            <button onClick={handleReverse}>Reverse</button>
+            <main className="transactions-container">
+              {transactions}
+            </main>
+          </section>
+        </main>
+      }
       
       
 

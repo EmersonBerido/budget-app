@@ -2,13 +2,16 @@
 
 const Colors = {
   //main background colors
-  primary: "#FFFDD0",
-  secondary : "#FFFEE5",
+  primary: "#FFFEEE",
+  secondary : "#fffef7ff",
   tertiary : "yellow",
 
-  //transaction types
+  //text colors
+  mainText : "#282828",
+  subText : "#404040",
   expense : "red",
   income : "green",
+
 
   //categories
   food : "orange",

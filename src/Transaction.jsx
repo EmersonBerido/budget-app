@@ -32,7 +32,7 @@ function Transaction(props)
       <h2 id="store">{props.store}</h2>
       <h2 
         id={props.transactionType === "expense" ? "expense" : "income"}
-        >
+      >
         {`$${props.amount}`}
       </h2>
       <h2 id="item">{props.item}</h2>

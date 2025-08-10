@@ -1,8 +1,16 @@
 import AmountBar from "./AmountBar.jsx";
+import "./Summary.css";
+import Colors from "./Colors.js";
 
 //maybe use state to store total income and total spent so we can force a rerender when new transaction is added
 function Summary() 
 {
+  //styling
+  document.documentElement.style.setProperty("--primary", Colors.primary);
+  document.documentElement.style.setProperty("--mainText", Colors.mainText);
+  document.documentElement.style.setProperty("--subText", Colors.subText)
+
+
   const data = JSON.parse(localStorage.getItem("userInfo") || []);
 
   //overall spending and income
@@ -98,12 +106,16 @@ function Summary()
   })
 
   return (
-    <section>
-      <h1>summary</h1>
-      <h2>Total Income: ${totalIncome.toFixed(2)}</h2>
-      {incomeBars}
-      <h2>Total Spent: ${totalSpent.toFixed(2)}</h2>
-      {expenseBars}
+    <section className="summary-container">
+      <h1>Overview</h1>
+      <h2 className="totals">Total Income: ${totalIncome.toFixed(2)}</h2>
+      <div className="transaction-list-container">
+        {incomeBars}
+      </div>
+      <h2 className="totals">Total Spent: ${totalSpent.toFixed(2)}</h2>
+      <div className="transaction-list-container">
+        {expenseBars}
+      </div>
     </section>
   )
 }

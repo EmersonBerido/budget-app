@@ -1,0 +1,38 @@
+:root {
+  --primary : white;
+  --secondary : white;
+  --mainText : black;
+  --subText : #303030;
+}
+.summary-container {
+  border : 3px solid grey;
+  border-radius : 10px;
+  background-color: var(--secondary);
+  height : 100%;
+  width : 90%;
+  font-size : 20px;
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  gap : 20px;
+  font-family: "Times new Roman", "sans-serif", serif;
+
+}
+.summary-container > h1 {
+  color : var(--mainText);
+  font-size : 40px;
+  text-align: center;
+}
+.totals{
+  color : var(--subText);
+  font-size: 1.5em;
+  text-align: left;
+}
+.transaction-list-container
+{
+  width : 100%;
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  gap : 5px;
+}
