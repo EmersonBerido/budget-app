@@ -3,9 +3,10 @@
   --secondary : white;
   --mainText : black;
   --subText : #303030;
+  --mainBorder : black;
 }
 .summary-container {
-  border : 3px solid grey;
+  border : 4px solid var(--mainBorder);
   border-radius : 10px;
   background-color: var(--secondary);
   height : 100%;
@@ -16,7 +17,8 @@
   align-items: center;
   gap : 20px;
   font-family: "Times new Roman", "sans-serif", serif;
-
+  padding-top : 20px;
+  padding-bottom : 20px;
 }
 .summary-container > h1 {
   color : var(--mainText);

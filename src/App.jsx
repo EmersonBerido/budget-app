@@ -47,6 +47,7 @@ function App() {
         amount = {current.amount}
         item = {current.item}
         transactionType = {current.transactionType}
+        category = {current.category}
         date = {current.date}
         setList = {setTransactionList}
       />
@@ -114,10 +115,12 @@ function App() {
         <main className="info-container">
           <Summary/>
           <section className="viewable-transactions-container">
-            <button onClick={() => handleFilter("category")}>Category</button>
-            <button onClick={() => handleFilter("price")}>Price</button>
-            <button onClick={() => handleFilter("date")}>Date</button>
-            <button onClick={handleReverse}>Reverse</button>
+            <div className="filters-container">
+              <button className="filter" onClick={() => handleFilter("category")}>Group</button>
+              <button className="filter" onClick={() => handleFilter("price")}>Price</button>
+              <button className="filter" onClick={() => handleFilter("date")}>Date</button>
+              <button className="filter" onClick={handleReverse}>Reverse</button>
+            </div>
             <main className="transactions-container">
               {transactions}
             </main>

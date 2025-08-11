@@ -3,8 +3,11 @@
 const Colors = {
   //main background colors
   primary: "#FFFEEE",
-  secondary : "#fffef7ff",
+  secondary : "#fcfaf5ff",
   tertiary : "yellow",
+
+  //borders
+  mainBorder : "#d2d0a1ff",
 
   //text colors
   mainText : "#282828",
@@ -14,11 +17,11 @@ const Colors = {
 
 
   //categories
-  food : "orange",
-  entertainment : "pink",
-  school : "red",
-  job : "grey",
-  health : "lightblue"
+  food : "#ffc24b",
+  entertainment : "#f47068",
+  school : "#ffb3ae",
+  job : "#0E606B",
+  health : "#1697A6"
 }
 
 export default Colors;

@@ -1,7 +1,15 @@
 :root {
   --primary : white;
   --secondary : white;
+  --infoContainerFD : column;
 }
+
+@media (min-width : 600px){
+  :root {
+    --infoContainerFD : row;
+  }
+}
+
 * {
   margin : 0;
 }
@@ -16,6 +24,46 @@
 .info-container {
   border : 3px solid green;
   display : flex;
+  flex-direction: var(--infoContainerFD);
+}
+.viewable-transactions-container{
+  border: 3px solid aquamarine;
+  width : 100%;
+  display : flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap : 10px;
+  padding: 0;
+}
+.filters-container {
+  display : flex;
+  justify-content: space-around;
+  border : 3px solid pink;
+  width : 100%;
+}
+.filter {
+  padding : 5%;
+  border-radius: 20px;
+  background-color: white;
+  font-family: "Times New Roman", sans-serif, serif;
+  width : 100%;
+  font-size: 1em;
+  font-weight: 1000;
+  text-align: center;
+}
+.transactions-container {
+  border : 4px solid black;
+  padding : 5%;
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  gap : 20px;
+  max-height : 80vh;
+  width : 90%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.transactions-container::-webkit-scrollbar{
+  display : none;
 }

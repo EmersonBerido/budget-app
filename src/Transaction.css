@@ -1,23 +1,11 @@
 :root {
-  --primary : white;
-  --secondary : white;
-
-
   --expense : red;
   --income : green;
+
+  --mainText : white;
+  --subText : white;
 }
 
-.transaction-container {
-  position : relative;
-  background-color: var(--primary);
-  border : 3px solid blue;
-  font-size: 24px;
-  padding : 2% 8%;
-  width : 70vw;
-  max-width: 750px;
-  height : 150px;
-  border-radius : 13px;
-}
 
 .transaction-container * {
   background-color : transparent;
@@ -38,20 +26,27 @@
 }
 .transaction-container > #store {
   position : absolute;
-  top : 0px;
+  top : 4px;
   left : 3%;
   font-size : 1em;
+  color : var(--mainText);
 }
 .transaction-container > #item {
+  border : 3px solid pink;
   position : absolute;
   top : 30%;
   font-size : 0.9em;
+  width: 90%;
+  height: 50%;
+  text-wrap: wrap;
+  color : var(--subText);
 }
 .transaction-container > #date {
   position : absolute;
   bottom : 0px;
   right : 3%;
   font-size : 0.8em;
+  color : var(--subText);
 }
 .transaction-container > button {
   position : absolute;

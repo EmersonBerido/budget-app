@@ -1,5 +1,6 @@
 import Colors from "./Colors.js";
 import "./Transaction.css"
+import logo from "./assets/react.svg"
 //will later import images of transaction categories: food, entertainment, etc (all created by libresprite)
 
 //format brainstorming:
@@ -12,8 +13,11 @@ import "./Transaction.css"
 
 document.documentElement.style.setProperty("--expense", Colors.expense);
 document.documentElement.style.setProperty("--income", Colors.income);
+document.documentElement.style.setProperty("--mainText", Colors.mainText);
+document.documentElement.style.setProperty("--subText", Colors.subText);
 function Transaction(props)
 {
+
   function handleDelete()
   {
     console.log("delete test", props.id);
@@ -23,12 +27,40 @@ function Transaction(props)
     })
   }
 
+  const transactionContainerStyle = {
+    position : "relative",
+    display : "flex",
+    justifyContent : "center",
+    alignItems : "center",
+    backgroundColor: Colors.secondary,
+    border : `3px solid ${Colors.mainBorder}`,
+    boxShadow: `0px -6px ${Colors[props.category]}`,
+    fontSize: "24px",
+    width : "100%",
+    maxWidth: "750px",
+    minHeight : "150px",
+    borderRadius : "13px",
+  };
 
+  const iconStyle = {
+    position : "absolute",
+    left : "50%",
+    top : "50%",
+    width : "auto",
+    height : "100%",
+    transform : "translate(-50%, -50%)",
+    opacity : 0.25
+    
+
+
+  }
 
   return (
     <article 
       className = "transaction-container"
+      style={transactionContainerStyle}
     >
+      <img src={logo} style={iconStyle}/>
       <h2 id="store">{props.store}</h2>
       <h2 
         id={props.transactionType === "expense" ? "expense" : "income"}
@@ -43,4 +75,5 @@ function Transaction(props)
     </article>
   )
 }
+
 export default Transaction;

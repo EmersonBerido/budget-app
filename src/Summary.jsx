@@ -8,7 +8,8 @@ function Summary()
   //styling
   document.documentElement.style.setProperty("--primary", Colors.primary);
   document.documentElement.style.setProperty("--mainText", Colors.mainText);
-  document.documentElement.style.setProperty("--subText", Colors.subText)
+  document.documentElement.style.setProperty("--subText", Colors.subText);
+  document.documentElement.style.setProperty("--mainBorder", Colors.mainBorder);
 
 
   const data = JSON.parse(localStorage.getItem("userInfo") || []);
