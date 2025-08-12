@@ -95,9 +95,6 @@ function Transaction(props)
       </h2>
       <h2 id="item">{props.item}</h2>
       <h2 id="date">{`${props.date.day} / ${props.date.month} / ${props.date.year}`}</h2>
-      <button onClick={handleDelete}>
-        Trash
-      </button>
     </article>
   )
 }

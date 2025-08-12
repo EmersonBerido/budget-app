@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+import Login from "./Login.jsx";
 import AddTransaction from './AddTransaction.jsx';
 import Transaction from "./Transaction.jsx"
 import Summary from "./Summary.jsx";
@@ -12,34 +13,12 @@ document.documentElement.style.setProperty("--border", Colors.mainBorder)
 
 
 function App() {
+  //TODO; set to false after development
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
-  //TODO: SET TO FALSE AFTER DEVELOPMENT
-  const [displayAdd, setDisplayAdd] = useState(true);
+  const [displayAdd, setDisplayAdd] = useState(false);
 
   //Local Storage
   const [transactionList, setTransactionList] = useState(localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []);
-  
-
-  // --- Login Functionality ---
-  const isReturningUser = localStorage.getItem("password") !== null
-
-  //handles password submission
-  function SetupAccount(event){
-    //check if its a returning user via local storage
-    event.preventDefault();
-    if (isReturningUser){
-      if (event.target.password.value === localStorage.getItem("password")){
-        setIsUserLoggedIn(true);
-      }
-      else {
-        alert("Incorrect password");
-      }
-    }
-    else {
-      localStorage.setItem("password", event.target.password.value)
-    }
-  }
 
   //--- creates list of transactions that'll be displayed ---
   const [transactions, setTransactions] = useState([]);
@@ -91,51 +70,41 @@ function App() {
   // -- Styling --
   //document.documentElement.style.setProperty("--secondary", Colors.secondary);
 
-  console.log(displayAdd);
-
   return (
     <main className="app-container">
       <header className = "login-container">
-        <h1>title</h1>
-        {isReturningUser ? <h2>Welcume</h2> : <h2>Sign up</h2>}
-        <form onSubmit = {SetupAccount}>
-          <input type = "text" name = "password" placeholder = "Enter password" required />
-          <button type = "submit">submit</button>
-        </form>
-
-      {
-        //if user is logged in, show details
-      }
-      {isUserLoggedIn && 
-        <>
-          <h2>Added the right password</h2>
-        </>
-      }
-
+        <Login 
+          setLogin={setIsUserLoggedIn}
+        />
       </header>
 
-      {displayAdd &&
-        <AddTransaction
-          list = {transactionList}
-          setList = {setTransactionList}
-        />
-      }
-      {transactionList.length > 0 && 
-        <main className="info-container">
-          <Summary/>
-          <section className="viewable-transactions-container">
-            <div className="filters-container">
-              <button className="filter" onClick={() => handleFilter("category")}>Group</button>
-              <button className="filter" onClick={() => handleFilter("price")}>Price</button>
-              <button className="filter" onClick={() => handleFilter("date")}>Date</button>
-              <button className="filter" onClick={handleReverse}>Reverse</button>
-              <button className="add-button" onClick={() => setDisplayAdd(prev => !prev)}>+</button>
-            </div>
-            <main className="transactions-container">
-              {transactions}
+      {isUserLoggedIn && 
+        <>
+          {displayAdd &&
+            <AddTransaction
+              list = {transactionList}
+              setList = {setTransactionList}
+              remove = {setDisplayAdd}
+            />
+          }
+          {transactionList.length > 0 && 
+            <main className="info-container">
+              <Summary/>
+              <section className="viewable-transactions-container">
+                <div className="filters-container">
+                  <button className="filter" onClick={() => handleFilter("category")}>Group</button>
+                  <button className="filter" onClick={() => handleFilter("price")}>Price</button>
+                  <button className="filter" onClick={() => handleFilter("date")}>Date</button>
+                  <button className="filter" onClick={handleReverse}>Reverse</button>
+                  <button className="add-button" onClick={() => setDisplayAdd(prev => !prev)}>+</button>
+                </div>
+                <main className="transactions-container">
+                  {transactions}
+                </main>
+              </section>
             </main>
-          </section>
-        </main>
+          }   
+        </>
       }
       
       

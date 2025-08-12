@@ -5,6 +5,7 @@ const primary = Colors.primary;
 console.log(primary)
 document.documentElement.style.setProperty("--primary", primary);
 document.documentElement.style.setProperty("--secondary", Colors.secondary);
+document.documentElement.style.setProperty("--border", Colors.mainBorder);
 
 //---Important Notes---
 //id is started at 0; kept for deletion purposes later
@@ -54,25 +55,31 @@ function AddTransaction(props) {
     //stored in stack??
   }
 
+  function exit()
+  {
+    props.remove(false);
+  }
+
   return (
     <section className="add-transaction-container">
+      <button onClick={exit} className="remove-button">-</button>
       <form 
         onSubmit={handleSubmit}
         className="form-container"
       >
         <input type="text" name="store" id="store" placeholder="Store Name" aria-label="store name" maxLength={20} required/>
 
-        <div className="amount-container">
+        <div className="label-input">
           <label htmlFor="amount">Amount</label>
           <input type="number" inputMode="numeric" name = "amount" id="amount" min="0" step="0.01" required/>
         </div>
 
-        <div className="item-container">
+        <div className="label-input">
           <label htmlFor="item">Item</label>
           <input type="text" name="item" id="item" placeholder="Banana" maxLength={85} required/>
         </div>
 
-        <div className="transaction-type-container">
+        <div className="label-input">
           <label htmlFor="transactionType">Expense or Income?</label>
           <select name="transactionType" id="transactionType" defaultValue="" required>
             <option value="" disabled>Select Type</option>
@@ -81,7 +88,7 @@ function AddTransaction(props) {
           </select>
         </div>
 
-        <div className="category-container">
+        <div className="label-input">
           <label htmlFor="category">Category</label>
           <select name="category" id="category" defaultValue="" required>
             <option value="" disabled>Select Category</option>
@@ -93,17 +100,17 @@ function AddTransaction(props) {
           </select>
         </div>
 
-        <div className="date-container">
-          <p>Date MM/DD/YEAR</p>
+        <div className="label-input">
+          <p>Date</p>
           <section className="date">
-            <input type="number" min="1" max="12" name="month" id="month" placeholder="12" required/>
-            <input type="number" min="1" max="31" name="day" id="day" placeholder="25" required/>
-            <input type="number" min="2000" max="2025" name="year" id="year" placeholder="2025" required/>
+            <input type="number" min="1" max="12" name="month" id="month" placeholder="MM" required/>
+            <input type="number" min="1" max="31" name="day" id="day" placeholder="DD" required/>
+            <input type="number" min="2000" max="2025" name="year" id="year" placeholder="YYYY" required/>
           </section>
         </div>
 
         <section className="buttons-container">
-          <button type="submit">submit</button>
+          <button type="submit" onClick={exit}>submit</button>
           <button type="reset">Clear</button>
         </section>
 

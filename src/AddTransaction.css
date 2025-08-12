@@ -1,19 +1,29 @@
 :root {
   --primary : Yellow;
   --secondary : blue;
+  --border : white;
 }
 
 .add-transaction-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   left : 50%;
   top : 50%;
   transform: translate(-50%, -50%);
   background-color: var(--secondary);
-  border : 1px solid red;
-  width : 70vw;
-  max-width: 750px;
-  padding : 2% 8%;
+  border : 4px solid var(--border);
+  border-radius: 10px;
+  width : 80vw;
+  max-width: 450px;
+  height: 50vh;
+  max-height: 600px;
   z-index : 100;
+  font-size: 18px;
+}
+.add-transaction-container * {
+  font-family: "Times New Roman", sans-serif, serif;
 }
 .add-transaction-container label{
   background-color : transparent;
@@ -21,7 +31,80 @@
 .add-transaction-container > form, .store-item-container, .date {
   background-color: transparent;
 }
-.add-transaction-container input {
+.add-transaction-container input, select {
   border-radius : 8px;
-  border : 3px solid grey;
+  border : 3px solid var(--border);
+  text-align: center;
+}
+select::content{
+  border-color: var(--border);
+}
+.form-container {
+  position: relative;
+  width : 90%;
+  height : 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap : 15px;
+}
+.form-container input, select {
+  width : 30%;
+}
+.form-container > input {
+  border: 3px solid var(--border);
+  height: 10%;
+  width: 60%;
+  margin-bottom: 5%;
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: center;
+}
+.date {
+  display: flex;
+  justify-content: flex-end;
+}
+.date input{
+  width : 20%;
+  text-align: center;
+}
+.label-input {
+  border-bottom: 2px dashed var(--border);
+  display : flex;
+  align-items: center;
+  justify-content: space-between;
+  width : 100%;
+}
+.buttons-container {
+  position: absolute;
+  bottom: 0px;
+  width : 80%;
+  height : 13%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buttons-container button {
+  height: 100%;
+  width: 40%;
+  border-radius: 15px;
+  background-color: var(--secondary);
+  border: 3px solid var(--border);
+}
+.remove-button {
+  border: 3px solid var(--border);
+  background-color: maroon;
+  color: white;
+  font-size: 2.1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position : absolute;
+  top: -15px;
+  left: -15px;
+  width : 13%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
 }
