@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import Overview from "./Overview.jsx";
 import AddTransaction from './AddTransaction.jsx';
 import Transaction from "./Transaction.jsx"
 import Summary from "./Summary.jsx";
@@ -15,7 +14,7 @@ document.documentElement.style.setProperty("--border", Colors.mainBorder)
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  //SET TO FALSE AFTER DEVELOPMENT
+  //TODO: SET TO FALSE AFTER DEVELOPMENT
   const [displayAdd, setDisplayAdd] = useState(true);
 
   //Local Storage
@@ -114,7 +113,7 @@ function App() {
       }
 
       </header>
-      <Overview/>
+
       {displayAdd &&
         <AddTransaction
           list = {transactionList}

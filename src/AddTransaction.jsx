@@ -56,53 +56,56 @@ function AddTransaction(props) {
 
   return (
     <section className="add-transaction-container">
-      <h1>Add Transaction</h1>
       <form 
         onSubmit={handleSubmit}
         className="form-container"
       >
-        <div className="store-item-container">
+        <input type="text" name="store" id="store" placeholder="Store Name" aria-label="store name" maxLength={20} required/>
 
-          <label htmlFor="store">Store</label>
-          <input type="text" name="store" id="store" placeholder="Target" maxLength={20} required/>
-
+        <div className="amount-container">
           <label htmlFor="amount">Amount</label>
           <input type="number" inputMode="numeric" name = "amount" id="amount" min="0" step="0.01" required/>
-
         </div>
 
-        <label htmlFor="item">Item</label>
-        <input type="text" name="item" id="item" placeholder="Banana" maxLength={85} required/>
+        <div className="item-container">
+          <label htmlFor="item">Item</label>
+          <input type="text" name="item" id="item" placeholder="Banana" maxLength={85} required/>
+        </div>
 
-        <label htmlFor="transactionType">Expense or Income?</label>
-        <select name="transactionType" id="transactionType" defaultValue="" required>
-          <option value="" disabled>Select Type</option>
-          <option value="expense">Expense</option>
-          <option value="income">Income</option>
-        </select>
+        <div className="transaction-type-container">
+          <label htmlFor="transactionType">Expense or Income?</label>
+          <select name="transactionType" id="transactionType" defaultValue="" required>
+            <option value="" disabled>Select Type</option>
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </div>
 
-        <select name="category" id="category" defaultValue="" required>
-          <option value="" disabled>Select Category</option>
-          <option value="food" aria-label="food">Food</option>
-          <option value="entertainment" aria-label="entertainment">Entertainment</option>
-          <option value="school" aria-label="school">School</option>
-          <option value="job" aria-label="job">Job</option>
-          <option value="health" aria-label="health">Health</option>
-        </select>
+        <div className="category-container">
+          <label htmlFor="category">Category</label>
+          <select name="category" id="category" defaultValue="" required>
+            <option value="" disabled>Select Category</option>
+            <option value="food" aria-label="food">Food</option>
+            <option value="entertainment" aria-label="entertainment">Entertainment</option>
+            <option value="school" aria-label="school">School</option>
+            <option value="job" aria-label="job">Job</option>
+            <option value="health" aria-label="health">Health</option>
+          </select>
+        </div>
 
-        <section className="date">
-          <label htmlFor="day">Day</label>
-          <input type="number" min="0" max="31" name="day" id="day" placeholder="day" required/>
+        <div className="date-container">
+          <p>Date MM/DD/YEAR</p>
+          <section className="date">
+            <input type="number" min="1" max="12" name="month" id="month" placeholder="12" required/>
+            <input type="number" min="1" max="31" name="day" id="day" placeholder="25" required/>
+            <input type="number" min="2000" max="2025" name="year" id="year" placeholder="2025" required/>
+          </section>
+        </div>
 
-          <label htmlFor="month">Month</label>
-          <input type="number" min="1" max="12" name="month" id="month" required/>
-
-          <label htmlFor="year">Year</label>
-          <input type="number" min="2000" max="2025" name="year" id="year" required/>
+        <section className="buttons-container">
+          <button type="submit">submit</button>
+          <button type="reset">Clear</button>
         </section>
-
-        <button type="submit">submit</button>
-        <button type="reset">Clear</button>
 
         
       </form>
