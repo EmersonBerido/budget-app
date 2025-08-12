@@ -1,6 +1,11 @@
 import Colors from "./Colors.js";
 import "./Transaction.css"
 import logo from "./assets/react.svg"
+import FoodLogo from "./assets/foodIcon.png"
+import entertainmentLogo from "./assets/entertainmentIcon.png"
+import healthLogo from "./assets/healthIcon.png"
+import schoolLogo from "./assets/schoolIcon.png"
+import jobLogo from "./assets/jobIcon.png"
 //will later import images of transaction categories: food, entertainment, etc (all created by libresprite)
 
 //format brainstorming:

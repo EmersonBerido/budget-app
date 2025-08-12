@@ -64,7 +64,7 @@ function AddTransaction(props) {
         <div className="store-item-container">
 
           <label htmlFor="store">Store</label>
-          <input type="text" name="store" id="store" placeholder="Target" required/>
+          <input type="text" name="store" id="store" placeholder="Target" maxLength={20} required/>
 
           <label htmlFor="amount">Amount</label>
           <input type="number" inputMode="numeric" name = "amount" id="amount" min="0" step="0.01" required/>
@@ -72,7 +72,7 @@ function AddTransaction(props) {
         </div>
 
         <label htmlFor="item">Item</label>
-        <input type="text" name="item" id="item" placeholder="Banana" required/>
+        <input type="text" name="item" id="item" placeholder="Banana" maxLength={85} required/>
 
         <label htmlFor="transactionType">Expense or Income?</label>
         <select name="transactionType" id="transactionType" defaultValue="" required>

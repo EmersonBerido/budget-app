@@ -7,6 +7,10 @@ import Summary from "./Summary.jsx";
 import mergeSort from './MergeSort.js';
 import './App.css';
 
+import Colors from "./Colors.js";
+
+document.documentElement.style.setProperty("--border", Colors.mainBorder)
+
 
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -120,6 +124,7 @@ function App() {
               <button className="filter" onClick={() => handleFilter("price")}>Price</button>
               <button className="filter" onClick={() => handleFilter("date")}>Date</button>
               <button className="filter" onClick={handleReverse}>Reverse</button>
+              <button className="add-button">+</button>
             </div>
             <main className="transactions-container">
               {transactions}
