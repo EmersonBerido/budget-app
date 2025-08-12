@@ -20,7 +20,7 @@
 .transaction-container > #expense, .transaction-container > #income {
   font-size: 1em;
   position : absolute;
-  top : 0px;
+  top : 5px;
   right : 3%;
 
 }
@@ -32,7 +32,6 @@
   color : var(--mainText);
 }
 .transaction-container > #item {
-  border : 3px solid pink;
   position : absolute;
   top : 30%;
   font-size : 0.9em;

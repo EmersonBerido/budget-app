@@ -1,7 +1,8 @@
 import Colors from "./Colors.js";
 import "./Transaction.css"
+
 import logo from "./assets/react.svg"
-import FoodLogo from "./assets/foodIcon.png"
+import foodLogo from "./assets/foodIcon.png"
 import entertainmentLogo from "./assets/entertainmentIcon.png"
 import healthLogo from "./assets/healthIcon.png"
 import schoolLogo from "./assets/schoolIcon.png"
@@ -39,7 +40,7 @@ function Transaction(props)
     alignItems : "center",
     backgroundColor: Colors.secondary,
     border : `3px solid ${Colors.mainBorder}`,
-    boxShadow: `0px -6px ${Colors[props.category]}`,
+    boxShadow: `-10px -10px ${Colors[props.category]}`,
     fontSize: "24px",
     width : "100%",
     maxWidth: "750px",
@@ -60,12 +61,32 @@ function Transaction(props)
 
   }
 
+  function getIconSRC(category)
+  {
+    switch (category){
+      case "food" :
+        return foodLogo;
+      case "entertainment" :
+        return entertainmentLogo;
+      case "school" :
+        return schoolLogo;
+      case "job" :
+        return jobLogo;
+      case "health" :
+        return healthLogo;
+      default:
+        return logo;
+    }
+  }
+
   return (
     <article 
       className = "transaction-container"
       style={transactionContainerStyle}
     >
-      <img src={logo} style={iconStyle}/>
+      <img 
+      src={getIconSRC(props.category)} 
+      style={iconStyle}/>
       <h2 id="store">{props.store}</h2>
       <h2 
         id={props.transactionType === "expense" ? "expense" : "income"}

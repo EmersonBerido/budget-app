@@ -4,11 +4,16 @@
 }
 
 .add-transaction-container {
-  background-color: var(--secondary);;
+  position: fixed;
+  left : 50%;
+  top : 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary);
   border : 1px solid red;
   width : 70vw;
   max-width: 750px;
   padding : 2% 8%;
+  z-index : 100;
 }
 .add-transaction-container label{
   background-color : transparent;

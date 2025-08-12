@@ -15,6 +15,9 @@ document.documentElement.style.setProperty("--border", Colors.mainBorder)
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
+  //SET TO FALSE AFTER DEVELOPMENT
+  const [displayAdd, setDisplayAdd] = useState(true);
+
   //Local Storage
   const [transactionList, setTransactionList] = useState(localStorage.getItem("userInfo") !== null ? JSON.parse(localStorage.getItem("userInfo")) : []);
   
@@ -89,6 +92,7 @@ function App() {
   // -- Styling --
   //document.documentElement.style.setProperty("--secondary", Colors.secondary);
 
+  console.log(displayAdd);
 
   return (
     <main className="app-container">
@@ -111,10 +115,12 @@ function App() {
 
       </header>
       <Overview/>
-      <AddTransaction
-        list = {transactionList}
-        setList = {setTransactionList}
-      />
+      {displayAdd &&
+        <AddTransaction
+          list = {transactionList}
+          setList = {setTransactionList}
+        />
+      }
       {transactionList.length > 0 && 
         <main className="info-container">
           <Summary/>
@@ -124,7 +130,7 @@ function App() {
               <button className="filter" onClick={() => handleFilter("price")}>Price</button>
               <button className="filter" onClick={() => handleFilter("date")}>Date</button>
               <button className="filter" onClick={handleReverse}>Reverse</button>
-              <button className="add-button">+</button>
+              <button className="add-button" onClick={() => setDisplayAdd(prev => !prev)}>+</button>
             </div>
             <main className="transactions-container">
               {transactions}
