@@ -72,13 +72,8 @@ function App() {
 
   return (
     <main className="app-container">
-      <header className = "login-container">
-        <Login 
-          setLogin={setIsUserLoggedIn}
-        />
-      </header>
 
-      {isUserLoggedIn && 
+      {isUserLoggedIn ? 
         <>
           {displayAdd &&
             <AddTransaction
@@ -105,6 +100,7 @@ function App() {
             </main>
           }   
         </>
+        : <Login setLogin={setIsUserLoggedIn} />
       }
       
       
