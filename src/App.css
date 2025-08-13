@@ -19,7 +19,7 @@
   }
 }
 
-* {
+*{
   margin : 0;
   background-color: var(--primary);
 }
@@ -37,6 +37,8 @@
   flex-direction: var(--infoContainerFD);
   align-items: var(--infoContainerAI);
   justify-content: space-evenly;
+  gap: 20px;
+  padding : 30px;
 }
 .viewable-transactions-container{
   width : var(--viewableWidth);

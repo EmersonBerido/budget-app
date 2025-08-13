@@ -1,5 +1,6 @@
 import "./Login.css";
 import Colors from "./Colors.js";
+import {useNavigate} from "react-router-dom";
 
 function Login(props)
 {
@@ -7,13 +8,16 @@ function Login(props)
   
   const isReturningUser = localStorage.getItem("password") !== null;
 
+  const Navigate = useNavigate();
+
     function SetupAccount(event)
     {
       //check if its a returning user via local storage
       event.preventDefault();
       if (isReturningUser){
         if (event.target.password.value === localStorage.getItem("password")){
-          props.setLogin(true);
+          //props.setLogin(true);
+          Navigate("/App");
         }
         else {
           alert("Incorrect password");
@@ -34,7 +38,7 @@ function Login(props)
 
       
       <form onSubmit = {SetupAccount} className="login-form-container">
-        <input type = "text" name = "password" placeholder = "Enter password" required />
+        <input type = "password" name = "password" placeholder = "Enter password" required />
         <button type = "submit">Login !</button>
       </form>
     </main>

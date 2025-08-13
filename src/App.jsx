@@ -13,8 +13,6 @@ document.documentElement.style.setProperty("--border", Colors.mainBorder)
 
 
 function App() {
-  //TODO; set to false after development
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [displayAdd, setDisplayAdd] = useState(false);
 
   //Local Storage
@@ -24,7 +22,7 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    setTransactions(transactionList.map((current, index) => {
+    setTransactions(transactionList.map((current) => {
       return <Transaction 
         id = {current.id}
         key = {current.id}
@@ -72,39 +70,30 @@ function App() {
 
   return (
     <main className="app-container">
-
-      {isUserLoggedIn ? 
-        <>
-          {displayAdd &&
-            <AddTransaction
-              list = {transactionList}
-              setList = {setTransactionList}
-              remove = {setDisplayAdd}
-            />
-          }
-          {transactionList.length > 0 && 
-            <main className="info-container">
-              <Summary/>
-              <section className="viewable-transactions-container">
-                <div className="filters-container">
-                  <button className="filter" onClick={() => handleFilter("category")}>Group</button>
-                  <button className="filter" onClick={() => handleFilter("price")}>Price</button>
-                  <button className="filter" onClick={() => handleFilter("date")}>Date</button>
-                  <button className="filter" onClick={handleReverse}>Reverse</button>
-                  <button className="add-button" onClick={() => setDisplayAdd(prev => !prev)}>+</button>
-                </div>
-                <main className="transactions-container">
-                  {transactions}
-                </main>
-              </section>
-            </main>
-          }   
-        </>
-        : <Login setLogin={setIsUserLoggedIn} />
+      {displayAdd &&
+        <AddTransaction
+          list = {transactionList}
+          setList = {setTransactionList}
+          remove = {setDisplayAdd}
+        />
       }
-      
-      
-
+      {transactionList.length > 0 && 
+        <main className="info-container">
+          <Summary/>
+          <section className="viewable-transactions-container">
+            <div className="filters-container">
+              <button className="filter" onClick={() => handleFilter("category")}>Group</button>
+              <button className="filter" onClick={() => handleFilter("price")}>Price</button>
+              <button className="filter" onClick={() => handleFilter("date")}>Date</button>
+              <button className="filter" onClick={handleReverse}>Reverse</button>
+              <button className="add-button" onClick={() => setDisplayAdd(prev => !prev)}>+</button>
+            </div>
+            <main className="transactions-container">
+              {transactions}
+            </main>
+          </section>
+        </main>
+      }   
     </main>
   )
 }

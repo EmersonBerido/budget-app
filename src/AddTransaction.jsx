@@ -60,6 +60,8 @@ function AddTransaction(props) {
     props.remove(false);
   }
 
+  const date = new Date();
+
   return (
     <section className="add-transaction-container">
       <button onClick={exit} className="remove-button">-</button>
