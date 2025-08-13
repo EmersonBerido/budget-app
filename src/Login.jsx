@@ -1,5 +1,7 @@
 import "./Login.css";
 import Colors from "./Colors.js";
+import CatBody from "./assets/LoginCat.png";
+import CatTail from "./assets/LoginCatTail.png";
 import {useNavigate} from "react-router-dom";
 
 function Login(props)
@@ -31,9 +33,12 @@ function Login(props)
   return (
     <main className="login-container">
       <div className="title-login-container">
-        <h1>Pudget</h1>
+        <h1>Purrfect Budget</h1>
         {isReturningUser ? <h3>Welcome Back !</h3> : <h3>Sign up !</h3>}
-        <img src="https://imgs.search.brave.com/Kee2lIE0h2X2U51Naki82DZc40JxjskPcWHunvPeC8A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMTAv/ODcwLzc2MC9zbWFs/bC9vcmFuZ2UtdGFi/YnktY2F0LXRyYW5z/cGFyZW50LXBuZy5w/bmc"/>
+        <div className="cat-container">
+          <img src={CatBody} className="cat-body"/>
+          <img src={CatTail} className="cat-tail"/>
+        </div>
       </div>
 
       
