@@ -1,11 +1,13 @@
+import {useNavigate} from "react-router-dom";
 function Header()
 {
+  const Navigate = useNavigate();
   return (
     <header>
-      <h1>All Transactions</h1>
-      <h1>Monthly Overview</h1>
-      <h1>Settings</h1>
+      <button onClick={() => Navigate("/AllTransaction")}>All Transactions</button>
+      <button onClick={() => Navigate("/App")}>Monthly Transactions</button>
+      <button onClick={() => Navigate("/Settings")}>Settings</button>
     </header>
   )
 }
-export default Header
+export default Header;

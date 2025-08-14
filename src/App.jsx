@@ -6,6 +6,7 @@ import Transaction from "./Transaction.jsx"
 import Summary from "./Summary.jsx";
 import mergeSort from './MergeSort.js';
 import './App.css';
+import Header from "./Header.jsx";
 
 import Colors from "./Colors.js";
 
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <main className="app-container">
+      <Header />
       {displayAdd &&
         <AddTransaction
           list = {transactionList}
